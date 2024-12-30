@@ -11,6 +11,11 @@ const BusRoutesSchema = new Schema({
     type: String,
     required: true,
   },
+      driverId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Driver',
+          default: null
+      },
   departureTime: {
     type: String,
     required: true,

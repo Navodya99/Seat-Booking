@@ -26,12 +26,14 @@ export const UpdateBusRouteController = async (req, res, next) => {
 
 export const GetAllBusRouteController = async (req, res, next) => {
   try {
-    const allBusRoute = await busRoutesModel.find();
+    const allBusRoute = await busRoutesModel.find()
+    .populate('driverId', 'name licenseNo mobileNo email');
     res.status(200).json(allBusRoute);
   } catch (error) {
     next(error);
   }
 };
+
 export const GetBusRouteController = async (req, res, next) => {
   try {
     const BusRoute = await busRoutesModel.findById(req.params.id);
